@@ -2,6 +2,24 @@
 require 'spec_helper'
 require 'anniversary.rb'
 describe "::Date" do
+  
+  context "Date.civil_with_missing_day_correction" do
+    it "should handle a leap day jump" do
+      Date.civil_with_missing_day_correction(2011, 2, 29).should == Date.civil(2011, 3, 1)
+    end
+    
+    it "should handle a normal short month jump" do
+      Date.civil_with_missing_day_correction(2011, 9, 31).should == Date.civil(2011, 10, 1)
+    end
+    
+    it "should handle a multi-day jump in a leap year" do
+      Date.civil_with_missing_day_correction(2012, 2, 31).should == Date.civil(2012, 3, 2)
+    end
+    
+    it "should handle a multi-day jump in a non-leap year" do
+      Date.civil_with_missing_day_correction(2011, 2, 31).should == Date.civil(2011, 3, 3)
+    end
+  end
 
   context "years_months_days_since" do
     def self.build_example(anniversary, subject, expected)
@@ -67,6 +85,6 @@ describe "::Date" do
      
      test_range( ::Date.civil(2000,6,1), ::Date.civil(2010,8,31))
      test_range( ::Date.civil(2000, 6, 15), ::Date.civil(2010,8,31))
-
+  
   end
 end
