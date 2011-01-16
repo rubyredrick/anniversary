@@ -1,4 +1,4 @@
-# Anniversary calculate years, months and days between two dates
+# Anniversary - calculate years, months and days between two dates
 http://talklikeaduck.denhaven2.com/2011/01/16/they-say-its-your-birthday
 
 Say you want to show the age of a person on a particular date, say for a medical report document.
