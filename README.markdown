@@ -19,10 +19,10 @@ There are complications since some months are shorter than others, so geting thi
 
   gem install anniversary
   
-#3 Documentation
+## Documentation
 
   basically this gem adds a few methods to Ruby's Date class. The key one is years_months_days_since which returns an array comprising the years months and days since the argument.
   
-  For details [rdoc](http://rdoc.info/github/rubyredrick/anniversary/master/Date "see the RDoc")
+  For details [see the rdoc](http://rdoc.info/github/rubyredrick/anniversary/master/Date)
   
-  For more on the mofivation [tld](http://talklikeaduck.denhaven2.com/2011/01/16/they-say-its-your-birthday "see my Blog")
+  For more on the mofivation [see my blog](http://talklikeaduck.denhaven2.com/2011/01/16/they-say-its-your-birthday)
