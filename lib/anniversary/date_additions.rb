@@ -49,13 +49,16 @@ class Date
         else
           year - initial_date.year - 1
         end
-        last_monthiversary = monthiversary_this_month = initial_date.in_year_and_month_with_correction(year, month)
-        puts "monthiversary_this_month is #{monthiversary_this_month}" if debug
-        if (monthiversary_this_month > self)
-          last_month = Date.civil(year, month, 1) << 1
-          last_monthiversary = initial_date.in_year_and_month_with_correction(last_month.year, last_month.month)
-        end
+        last_monthiversary = initial_date.in_year_and_month_with_correction(year, month)
         puts "last_monthiversary is #{last_monthiversary}" if debug
+        if (last_monthiversary > self)
+          last_month = Date.civil(year, month, 1) << 1
+          while (last_monthiversary > self)
+            last_monthiversary = initial_date.in_year_and_month_with_correction(last_month.year, last_month.month)
+            last_month = last_month << 1
+          end
+        end
+        puts "last_monthiversary after correction is #{last_monthiversary}" if debug
 
         if last_monthiversary > initial_date
           months = (last_monthiversary.month - anniversary_this_year.month)
