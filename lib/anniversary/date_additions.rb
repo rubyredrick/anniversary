@@ -22,7 +22,7 @@ class Date
       days_in_month = 29 if (month == 2) && ((year % 4 == 0) && ((year % 400 == 0) || (year % 100 != 0)))
       if (days_in_month < day)
         month += 1
-        day = day - days_in_month
+        day = 1
       end
       civil(year, month, day)
     end

@@ -12,12 +12,12 @@ describe "::Date" do
       Date.civil_with_missing_day_correction(2011, 9, 31).should == Date.civil(2011, 10, 1)
     end
 
-    it "should handle a multi-day jump in a leap year" do
-      Date.civil_with_missing_day_correction(2012, 2, 31).should == Date.civil(2012, 3, 2)
+    it "should give March 1, for February '31' in a leap year" do
+      Date.civil_with_missing_day_correction(2012, 2, 31).should == Date.civil(2012, 3, 1)
     end
 
-    it "should handle a multi-day jump in a non-leap year" do
-      Date.civil_with_missing_day_correction(2011, 2, 31).should == Date.civil(2011, 3, 3)
+    it "should give March 1, for February '31' in a leap year" do
+      Date.civil_with_missing_day_correction(2011, 2, 31).should == Date.civil(2011, 3, 1)
     end
   end
 
@@ -83,11 +83,11 @@ describe "::Date" do
        end
 
        it "should handle the case of March 1, January 31 in the same non leap year" do
-         Date.civil(2010,3,1).years_months_days_since(Date.civil(2010,1,31)).should == [0, 0, 29]
+         Date.civil(2010,3,1).years_months_days_since(Date.civil(2010,1,31)).should == [0, 2, 0]
        end
 
        it "should handle the case of March 1, January 31 in the same leap year" do
-         Date.civil(2008,3,1).years_months_days_since(Date.civil(2008,1,31)).should == [0, 0, 30]
+         Date.civil(2008,3,1).years_months_days_since(Date.civil(2008,1,31)).should == [0, 2, 0]
        end
 
        it "should handle the first case brought up by pit capitan's comment on the blog" do

@@ -15,6 +15,14 @@ Your age in years, is actually the number of birthdays you have had, or to use a
 
 There are complications since some months are shorter than others, so geting this right is a bit tricky.  Hence Anniversary
 
+## UPDATE
+
+Well I said it was tricky.  While responding to some comments on my blog article, I realized that monthiversaries (and anniversaries of leap days) should always happen either on the same day in the month (if the month is long enough) or the first of the next month if not.  Note that if a month is too short then there will be two monthiversaries in the next month, once on the first, and a second on the actual day.
+
+In version 1 of the gem, I had the extra monthiversary in March fall on different days depending on whether or not the age was being calculated for a leap year or not.  This new version always places the extra monthiversaries on the first of the next month, see the update to my blog article for the rationale.
+
+Because this is a breaking change I've bumped the major version number.
+
 ## Installation
 
   gem install anniversary
