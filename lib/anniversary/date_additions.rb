@@ -62,6 +62,7 @@ class Date
 
         if last_monthiversary > initial_date
           months = (last_monthiversary.month - anniversary_this_year.month)
+          months -= 1 unless last_monthiversary.day == initial_date.day
           months += 12 if months < 0
         else
           months = 0

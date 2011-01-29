@@ -83,21 +83,36 @@ describe "::Date" do
        end
 
        it "should handle the case of March 1, January 31 in the same non leap year" do
-         Date.civil(2010,3,1).years_months_days_since(Date.civil(2010,1,31)).should == [0, 2, 0]
+         Date.civil(2010,3,1).years_months_days_since(Date.civil(2010,1,31)).should == [0, 1, 0]
        end
 
        it "should handle the case of March 1, January 31 in the same leap year" do
-         Date.civil(2008,3,1).years_months_days_since(Date.civil(2008,1,31)).should == [0, 2, 0]
+         Date.civil(2008,3,1).years_months_days_since(Date.civil(2008,1,31)).should == [0, 1, 0]
        end
 
        it "should handle the first case brought up by pit capitan's comment on the blog" do
-         Date.civil(2010,7,4).years_months_days_since(Date.civil(1970,1,31)).should == [40, 6, 3]
+         Date.civil(2010,7,4).years_months_days_since(Date.civil(1970,1,31)).should == [40, 5, 3]
        end
 
        it "should handle the second case brought up by pit capitan's comment on the blog" do
          Date.civil(2010,7,4).years_months_days_since(Date.civil(1970,2,1)).should == [40, 5, 3]
        end
-
+       
+       it "should count months correctly" do
+         Date.civil(2010, 1, 31).years_months_days_since(Date.civil(1970, 1, 31)).should == [40, 0, 0]
+         Date.civil(2010, 3, 1).years_months_days_since(Date.civil(1970, 1, 31)).should ==  [40, 1, 0]
+         Date.civil(2010, 3, 31).years_months_days_since(Date.civil(1970, 1, 31)).should == [40, 2, 0]
+         Date.civil(2010, 5, 1).years_months_days_since(Date.civil(1970, 1, 31)).should ==  [40, 3, 0]
+         Date.civil(2010, 5, 31).years_months_days_since(Date.civil(1970, 1, 31)).should ==  [40, 4, 0]
+         Date.civil(2010, 7, 1).years_months_days_since(Date.civil(1970, 1, 31)).should ==  [40, 5, 0]
+         Date.civil(2010, 7, 31).years_months_days_since(Date.civil(1970, 1, 31)).should == [40, 6, 0]
+         Date.civil(2010, 8, 31).years_months_days_since(Date.civil(1970, 1, 31)).should == [40, 7, 0]
+         Date.civil(2010, 10, 1).years_months_days_since(Date.civil(1970, 1, 31)).should == [40, 8, 0]
+         Date.civil(2010, 10, 31).years_months_days_since(Date.civil(1970, 1, 31)).should == [40, 9, 0]
+         Date.civil(2010, 12, 1).years_months_days_since(Date.civil(1970, 1, 31)).should == [40, 10, 0]
+         Date.civil(2010, 12, 31).years_months_days_since(Date.civil(1970, 1, 31)).should == [40, 11, 0]
+       end
+     
      test_range( ::Date.civil(2000,6,1), ::Date.civil(2010,8,31))
      test_range( ::Date.civil(2000, 6, 15), ::Date.civil(2010,8,31))
 
